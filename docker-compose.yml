@@ -1,0 +1,14 @@
+  version: '3.7'
+  services:
+    cron:
+      build: .
+      image: mycron
+      init: true
+      container_name: mycron
+      working_dir: /app
+      volumes:
+        - ./crontabs:/app/crontabs
+        - ./crontabs/root:/var/spool/cron/crontabs/root #念の為上書き
+        - ./main:/app/main
+        - ./log.txt:/app/log.txt
+
